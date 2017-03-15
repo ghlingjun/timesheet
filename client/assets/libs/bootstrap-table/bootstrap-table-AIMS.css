@@ -1,0 +1,7 @@
+/*工时样式*/
+.table-striped>tbody>tr{
+
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #E6EAED;
+}

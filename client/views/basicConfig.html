@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>工时系统</title>
+    <link rel="import" href="base/_header_css.html?__inline">
+    <style>
+        dd {margin: 10px 0}
+        .txtDefault {width:100px;display: inline-block;vertical-align: middle}
+        .ruleBox {border: 1px solid #c0c0c0;text-align: left;padding: 5px;border-radius: 5px;}
+    </style>
+</head>
+<body>
+<link rel="import" href="base/header.html?__inline">
+<div class="basicBox">
+    <dl class="dl-horizontal">
+        <dt>起始日期</dt>
+        <dd><input type="text"  autocomplete="off" class="form-control startDate wdate"></dd>
+        <dt>工时周期</dt>
+        <dd><input type="text" class="form-control timeWeek"  placeholder="" ></dd>
+        <dt>提交规则</dt>
+        <dd>
+            <div class="ruleBox">
+                <div>提交逾期：每个周期结束后&nbsp;<input type="text" class="form-control overdueWeek txtDefault"  placeholder=""
+                        >&nbsp;天内必须提交，否则视为逾期</div>
+                <div>可提前提交： <div style="display: inline-block"><input type="checkbox" />是
+                    <input type="checkbox">否</div></div>
+
+<<<<<<< HEAD
+                <div>审核逾期：每月必须&nbsp;<input type="text" class="form-control overdueWeek txtDefault"  placeholder="">&nbsp;日前（含当天）完成工时审核</div>
+            </div>
+        </dd>
+        <dt>导出工时表：</dt>
+        <dd><input type="text"  autocomplete="off" class="form-control startDate wdate txtDefault">&nbsp;至&nbsp;<input type="text"   autocomplete="off" class="form-control startDate wdate txtDefault">&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-sm">导出Excel</button></dd>
+=======
+                <div>审核逾期：每月必须&nbsp;<input type="text" class="form-control overdueWeek txtDefault"  placeholder=""
+                        >&nbsp;日前（含当天）完成工时审核</div>
+            </div>
+        </dd>
+        <dt>导出工时表：</dt>
+        <dd><input type="text"  autocomplete="off"
+                   class="form-control startDate wdate txtDefault">&nbsp;至&nbsp;<input type="text"   autocomplete="off" class="form-control startDate wdate txtDefault">&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-sm">导出Excel</button></dd>
+>>>>>>> acf094f771bdabc579c1881d6634894df92b2c8e
+    </dl>
+</div>
+
+<!-- 添加当前模板js -->
+<link rel="import" href="base/_footer_js.html?__inline">
+<script src="../assets/js/pages/basicConfig.js"></script>
+<script>
+    $(document).ready(function(){
+        $('input[type="checkbox"]').iCheck({
+            checkboxClass: 'icheckbox_polaris',
+            radioClass: 'iradio_polaris',
+            increaseArea: '-10' // optional
+        });
+
+        //日期
+        $(".wdate").datetimepicker({
+            format: 'yyyy-mm-dd',
+            minView: 2,
+            language: "zh-CN",
+            autoclose: true
+        })
+    });
+
+</script>
+</body>
+</html>

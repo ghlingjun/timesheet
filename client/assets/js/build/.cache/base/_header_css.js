@@ -1,0 +1,2 @@
+/*TMODJS:{"version":1,"md5":"c606739318b43f3413108c69964a7495"}*/
+template('base/_header_css','<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /> <link rel="stylesheet" type="text/css" href="/assets/css/base.css">');
