@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document-artTemplate</title>
+    <link rel="import" href="base/_header_css.html?__inline">
+</head>
+<body>
+    <link rel="import" href="base/header.html?__inline">
+	 <div id="main" >
+          {{include './templates/tpl/list' data}}
+     </div>
+
+      <div id="btn-test" style="with:100px;height:40px;">Hello,Test !</div>
+    <form>
+        <select class="courseBindSelect" name="select" id="courseBindSelect" style="width: 200px;">
+            <option data-aaa="00" value="0">请选择...</option>
+            <option data-aaa="11" value="1">你好1</option>
+            <option data-aaa="22" value="2">你好2</option>
+        </select>
+
+        <input type="radio" name="radio" value="2">
+        <input type="checkbox" name="checkbox" value="3">
+        <input type="text" id="dateTime" size="16" style="width: 200px;margin-top: 20px;" autocomplete="off" class="form-control">
+        <div id="tree"></div>
+    </form>
+     <table data-toggle="table"
+            data-url="https://api.github.com/users/wenzhixin/repos"
+            data-query-params="queryParams"
+            data-pagination="true"
+            data-search="true"
+            data-height="300">
+         <thead>
+         <tr>
+             <th data-field="name">Name</th>
+             <th data-field="stargazers_count">Stars</th>
+             <th data-field="forks_count">Forks</th>
+             <th data-field="description">Description</th>
+         </tr>
+         </thead>
+     </table>
+
+     <!-- 添加当前模板js -->
+
+     <link rel="import" href="base/_footer_js.html?__inline">
+    <script src="../assets/js/pages/index.js"></script>
+     <script>
+         $(document).ready(function () {
+             $("#courseBindSelect").select2();
+             $("#dateTime").datetimepicker({
+                 format: 'yyyy-mm-dd',
+                 minView: 2,
+                 language: "zh-CN",
+                 autoclose: true
+             }).on('changeDate',function(ev){
+                 tms.alert($("#dateTime").val());
+             });
+
+             function queryParams() {
+                 return {
+                     type: 'owner',
+                     sort: 'updated',
+                     direction: 'desc',
+                     per_page: 100,
+                     page: 1
+                 };
+             }
+            var _zNodesArr = [{
+                id:1,
+                pId:0,
+                name:"Tree",
+                open:true
+            },{
+                id:2,
+                pId:0,
+                name:"Tree2",
+                open:true
+            }]
+             var setting = {
+                 check: {
+                     enable: true,
+                     chkStyle: "checkbox",
+                     chkboxType: { "Y" : "ps", "N" : "ps" }
+                 },
+                 data: {
+                     simpleData: {
+                         enable: true
+                     }
+                 }
+             };
+             $.fn.zTree.init($("#tree"), setting, _zNodesArr);
+         })
+
+     </script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="import" href="base/_header_css.html?__inline">
+    <link rel="stylesheet" href="../assets/css/pages/timeAudit.less">
+</head>
+<body>
+<link rel="import" href="base/header.html?__inline">
+<!-- 工时审核str -->
+<div class="container-fluid">
+    <div class="contral">
+        <div class="fl">
+            <span>审批状态: </span>
+            <select class="form-control w135">
+                <option>全部</option>
+                <option>已处理</option>
+                <option>未处理</option>
+            </select>
+            <span class="pl10">人员: </span>
+            <select class="form-control w135">
+                <option>全部</option>
+                <option>张乐</option>
+                <option>雷克萨</option>
+                <option>姚萌</option>
+            </select>
+        </div>
+        <div class="fr">
+            <span>时间段: </span>
+            <input id="dateTime01" type="text" size="16" autocomplete="off" class="form-control w135">
+            <span>至</span>
+            <input id="dateTime02" type="text" size="16" autocomplete="off" class="form-control w135">
+            <button type="button" class="btn btn-info">搜索</button>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#passAudit" data-backdrop="static">通过审核</button>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reject" data-backdrop="static">驳回</button>
+        </div>
+    </div>
+    <table id="auditTable">
+        <thead>
+            <tr>
+                <th data-checkbox="true"></th>
+                <th data-field="name">人员</th>
+                <th data-field="date" data-width="170" data-formatter="dateFormatter">周期</th>
+                <th data-field="allDate">总工时</th>
+                <th data-field="status">审核状态</th>
+                <th data-field="subTime">提交时间</th>
+                <th data-field="overTime">提交逾期</th>
+                <th data-field="lastTime">最晚审核时间</th>
+                <th data-field="auditOverdue">审核逾期</th>
+                <th data-field="remark" data-width="250">备注</th>
+                <th data-field="action"
+                    data-width="100"
+                    data-formatter="actionFormatter">操作</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<!-- 工时审核end -->
+
+<!-- 查看意见str -->
+<div class="modal fade" id="view" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    查看意见
+                </h4>
+            </div>
+            <div class="modal-body" style="height:300px;">
+                审核情况
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 查看意见end -->
+
+<!-- 通过审核str -->
+<div class="modal fade" id="passAudit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    处理结果——通过
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="recipient-name" class="control-label">审核意见:</label>
+                    <textarea class="form-control" style="height: 100px;"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="control-label">密码:</label>
+                    <input type="password" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">上级继续审核</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal">通过</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 通过审核end -->
+
+<!-- 驳回str -->
+<div class="modal fade" id="reject" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    处理结果——驳回
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="recipient-name" class="control-label">审核意见:</label>
+                    <textarea class="form-control" style="height: 100px;"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="control-label">密码:</label>
+                    <input type="password" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 通过审核end -->
+
+<link rel="import" href="base/_footer_js.html?__inline">
+<script src="../assets/js/pages/timeAudit.js"></script>
+</body>
+</html>

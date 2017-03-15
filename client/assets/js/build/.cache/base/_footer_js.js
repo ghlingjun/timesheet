@@ -1,0 +1,2 @@
+/*TMODJS:{"version":22,"md5":"34b0c323ae0aa482e12cdf98ed5f657a"}*/
+template('base/_footer_js',' <!DOCTYPE html> <html lang="en"> <script src="/assets/js/common/hmac-sha256.js"></script> <script src="/assets/js/common/enc-base64.js"></script> <script src="/client/assets/js/require2.1.js"></script> <script src="/client/assets/js/tms.js"></script> </html> ');

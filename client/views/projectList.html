@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>项目列表</title>
+    <title>Title</title>
+    <link rel="import" href="base/_header_css.html?__inline">
+</head>
+<body>
+<link rel="import" href="base/header.html?__inline">
+<div class="projectTable" style="padding: 10px;">
+    <table id="projectList"  data-classes="table table-hover table-condensed" data-striped="true">
+        <thead>
+            <tr>
+                <th data-field="projectName" data-formatter="nameFormatter">项目名称</th>
+                <th data-field="projectNum">项目编号</th>
+                <th data-field="softwareAlias">申办方</th>
+                <th data-field="companyNum">研究分期</th>
+                <th data-field="nameOfUser">项目负责人</th>
+                <th data-field="projectName">项目状态</th>
+                <th data-field="nameOfUser">工时计划最新版本</th>
+                <th data-field="softwareAlias">最后修改时间</th>
+                <th data-field="projectName">提交日期</th>
+                <th data-field="projectNum">审核状态</th>
+                <th data-field="softwareAlias">审核通过日期</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<!-- 添加当前模板js -->
+<link rel="import" href="base/_footer_js.html?__inline">
+<script src="../assets/js/pages/projectList.js"></script>
+</body>
+</html>

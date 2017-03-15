@@ -1,0 +1,139 @@
+/**
+ * form css
+ * 已添加btn
+ */
+@import url(/client/assets/css/modules/variable.less);
+.ui-btn {
+    display: inline-block;
+	text-align: center;
+    text-decoration: none;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+    border-width: 0;
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 14px;
+    background: @title-color;
+    color: #fff;
+    cursor: pointer;
+    &:hover {
+        border-color: transparent;
+        color: #fff;
+    }
+    &.btn-confirm {
+        background-color: @btn-color;
+        color: #fff;
+        &:hover {
+            background-color:@btn-active;
+            color:#fff;
+        }
+    }
+    &.btn-cancel {
+        background-color: @btn-gray;
+        color: #fff;
+    }
+    &.btn-gray {
+        pointer-events: none;
+        background-color: @btn-gray;
+        color: #fff;
+        cursor: default;
+    }
+   
+    &.btn-white {
+        color: @btn-color;
+        border: 1px solid @btn-color;
+        background-color: #fff;
+        &:hover {
+            background-color: @btn-color;
+            color: #fff;
+        }
+    }
+    &.btn-md {
+        font-size: 18px;
+        height: 35px;
+    	line-height: 35px;
+    }
+}
+.form-message {
+    border: 1px solid transparent;
+    padding: 5px 10px;
+    line-height: 22px;
+    font-size: 16px;
+    display: block;
+    width: 310px;
+    margin-left: 148px;
+    margin-bottom: 15px;
+    &.form-message-error {
+        border-color: #ffbca6;
+        background-color: #FFF6f6;
+        color: #f63;
+        &:before {
+            margin-right: 5px;
+            margin-top: -1px;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            border: 1px solid #ff9000;
+            border-radius: 16px;
+            font-family: Arial;
+            font-weight: 700;
+            overflow: hidden;
+            text-align: center;
+            vertical-align: middle;
+            background-color: #ff9000;
+            color: #fff;
+            content: '!';
+        }   
+    }
+}
+.alert-p {
+	position: relative;
+	text-align: center;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	word-break: break-all;
+	font-size: 16px;
+    margin: 30px 0;
+    line-height: 30px;
+	i {
+        display: inline-block;
+        width: 44px;
+        height: 44px;
+        position: relative;
+        top: 10px;
+        background-image: url(../images/prompt.png);
+        background-repeat: no-repeat;
+        background-size: 80%;
+	}
+    span {
+        position: relative;
+        top: -10px;
+    }
+}
+
+#modal_dialog_alert, #modal_dialog_confirm {
+    .modal-header {
+        padding: 10px;
+        background-color: @primary-color;
+        .close {color: #fff;}
+        .modal-title {
+            font-size: 14px;
+            span {
+                width: 4px;
+                height: 12px;
+                display: inline-block;
+                background-color: @btn-color;
+                margin-right: 7px;
+            }
+        }
+    }
+    .modal-body {
+        line-height: 100px;
+    }
+    .modal-footer {
+        background-color: @bg-color;
+    }
+}

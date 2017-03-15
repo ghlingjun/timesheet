@@ -1,0 +1,42 @@
+/*工时样式*/
+.table-striped{
+    tbody{
+      tr{
+        color:#000;
+        background-color: #E6EAED;
+        td{
+          a{
+            color:blue;
+          }
+        }
+      }
+      tr:nth-of-type(odd){
+        background-color: #F5F9FC;
+      }
+    }
+}
+.addColumn{
+  background-color:#0092C4;
+}
+.isParent{
+  padding-left: 15px;
+  i.icon{
+    width:9px;
+    height:9px;
+    margin-right: 5px;
+    background-image:url("../../libs/tree-column/icon.png");
+    background-repeat: no-repeat;
+    background-position:0 0;
+    display: inline-block;
+    cursor:pointer;
+  }
+  i.icon-expand{
+    background-position:0 -9px;
+  }
+}
+.table>tbody>tr>td{
+  vertical-align: middle;
+}
+.treenode .vertical{
+  height:28px;
+}
