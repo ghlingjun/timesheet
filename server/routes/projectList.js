@@ -4,19 +4,19 @@ var template = require('art-template');
 var rp = require('request-promise');
 var Promise = require('bluebird');
 var request = require('request');
-//var config=require('../config');
-//const urls = require("../public/assets/js/modules/urls")
+var config=require('../config');
+var urls = require("../public/assets/js/modules/urls");
 /* GET login . */
 router.get('/', function(req, res, next) {
     var html = template('projectList', {title:"工时项目"});
     res.send(html);
 });
-router.get('/projectTask', function(req, res, next) {
+router.get('/:projectTask', function(req, res, next) {
     var data = {
         title: '工时项目',
         time: (new Date).toString(),
     };
-    var opts1={
+  /*  var opts1={
         method:"POST",
         uri:"http://127.0.0.1:91/workhour/projectquery.do",
         json:true
@@ -33,7 +33,21 @@ router.get('/projectTask', function(req, res, next) {
         data.list2=datas[1];
         var html=template("projectTask",data);
         res.send(html);
-    });
+    });*/
+    config.requestPromise({
+        req:req,
+        urls:[{
+            originalUrl:urls.workhour.projectQuery
+        },{
+            originalUrl:urls.workhour.planBriefQuery
+        }],
+        callback:function (datas) {
+            data.list1=datas[0];
+            data.list2=datas[1];
+            var html=template("projectTask",data);
+            res.send(html);
+        }
+    })
     /*request(opts,function (error,response,body) {
         data.list=body;
         var html=template("projectTask",data);

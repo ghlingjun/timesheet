@@ -136,7 +136,7 @@ const config = {
     syncRequest:getSyncRequest,
     requestPromise:getRequestPromise,
     callback:getCallback,
-	message:"配置全局封装方法..."
+	message:"配置全局方法..."
 };
 
 module.exports = config;

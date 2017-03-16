@@ -42,7 +42,6 @@ var tms = tms || {};
             periodRuleDetail:"workhour/periodRuleDetail.do",                   //规则设置获取
             periodRuleSave:"workhour/periodRuleSave.do",                       //规则设置保存
             periodRuleCanChangeCycleType:"periodRuleCanChangeCycleType.do",    //规则设置能否修改周期
-            projectQuery:"workhour/projectQuery.do",                           //项目清单
             planBriefQuery:"workhour/planBriefQuery.do",                       //计划概要信息
             planVersionCreate:"workhour/planVersionCreate.do",                 //计划版本创建行
             planVersionDetail:"workhour/planVersionDetail.do",                 //计划版本行明细

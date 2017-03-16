@@ -6,6 +6,7 @@
 .hisVersion.active{
     color: #00a2d9;
 }
+//任务信息
 .taskInfo{
     li{
         margin:10px;
@@ -21,7 +22,64 @@
         }
     }
 }
+//下拉框层级占位
 .holder{
     display: inline-block;
     width: 10px;
+}
+//审批情况弹框
+.approval-list{
+    color:#000;
+    .approval-item{
+        margin-bottom: 5px;
+        .title{
+            span{
+                display:inline-block;
+                background-color: #fff;
+                padding-right: 10px;
+            }
+            hr{
+                margin-top: -10px;
+            }
+        }
+        .approval-info{
+            margin-bottom: 5px;
+            li{
+                background-color: #F5F9FC;
+                border-bottom: 1px solid #fff;
+                span{
+                    height:30px;
+                    line-height:30px;
+                    display: inline-block;
+                    border-left: 1px solid #fff;
+                }
+                span.bt{
+                    width: 110px;
+                    padding-right: 10px;
+                    text-align: right;
+                    background-color: #97A5B2;
+                }
+                span.approval-text{
+                    text-align: left;
+                    width:160px;
+                    margin-left: -3px;
+                    padding-left: 10px;
+                }
+            }
+        }
+        .approval-submit-info{
+            li{
+                span.bt{
+                    background-color: #97A5B2;
+                }
+            }
+        }
+        .approval-task-info{
+            li{
+                span.bt{
+                    background-color: #E6EAED;
+                }
+            }
+        }
+    }
 }

@@ -12,7 +12,7 @@ var urls = require("../public/assets/js/modules/urls");
 //Node服务端直接渲染模板
 router.get('/', function(req, res, next) {
     //方式1：获取后端数据，绑定模板
-    config.syncRequest({
+    /*config.syncRequest({
         req:req,
         originalUrl:urls.workhour.projectQuery,
         body:{},
@@ -20,10 +20,10 @@ router.get('/', function(req, res, next) {
             var html = template('index', {list:data});
             res.send(html);
         }
-    });
+    });*/
     //方式2：直接渲染页面（仅仅路由功能），在js/pages/*.js下异步获取数据，绑定模板
-    /* var html = template('index', {});
-     res.send(html);*/
+     var html = template('index', {});
+     res.send(html);
 
     //方式3：获取多个api，promise实现
     /*config.requestPromise({

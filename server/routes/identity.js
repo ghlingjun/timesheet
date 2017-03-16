@@ -53,7 +53,11 @@ router.post('/origUserAuth.do', function(req, res, next) {
     config.request({
         request:req,
         callback:function (result) {
-            req.session.userInfo = userInfo;
+            //req.session.userInfo = userInfo;
+            //config.userInfo = userInfo; maxAge:360*1000,
+            res.cookie('tms', 'companyid='+userInfo.companyId+'&userid='+userInfo.userId, {
+                path:'/', httpOnly:true
+            });
             res.json(result);
         }
     })

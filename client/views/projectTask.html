@@ -29,7 +29,7 @@
     <div class="toolbar" style="position: absolute;top:143px;right: 66px;">
         <span class="notUpdateStatus">
             <button type="button" class="btn btn-default">导出</button>
-            <button type="button" class="btn btn-default">审批情况</button>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal3">审批情况</button>
         </span>
         <span class="updateStatus" style="display: none">
             <button type="button" class="btn btn-default">保存</button>
@@ -55,9 +55,11 @@
 </div>
 <!-- 弹出框 -->
 <!-- 提交计划 -->
-<link rel="import" href="projectSubPlan.html?__inline">
+<link rel="import" href="projectTaskMotal/projectSubPlan.html?__inline">
 <!-- 新增任务 -->
-<link rel="import" href="projectAddTask.html?__inline">
+<link rel="import" href="projectTaskMotal/projectAddTask.html?__inline">
+<!-- 审批情况 -->
+<link rel="import" href="projectTaskMotal/approvalInfo.html?__inline">
 <!-- 添加当前模板js -->
 <link rel="import" href="base/_footer_js.html?__inline">
 <link type="text/css" rel="stylesheet"  href="../assets/css/pages/projectTask.less">

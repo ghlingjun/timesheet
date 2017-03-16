@@ -7,9 +7,9 @@
     "clean": "rimraf ./server/public & rimraf ./server/views",
     "tmod2": "cd client/views/templates && tmod --no-watch && cd ../../../",
     "tmod": "cd client/views/templates && tmod",
-    "www": "npm run tmod2 && fis3 release debug -wcd ./server",
+    "www": "npm run tmod2 && fis3 release debug -wLcd ./server",
     "prd": "npm run clean && npm run tmod2 && fis3 release -wcd ./server",
-    "start": "node server/bin/www"
+    "server": "nodemon --debug server/bin/www"
   },
   "dependencies": {
     "art-template": "^3.0.3",
@@ -37,6 +37,7 @@
     "fis3-postpackager-loader": "^1.5.2",
     "fis3-postprocessor-autoprefixer": "^1.0.0",
     "node-glob": "^1.2.0",
+    "nodemon": "^1.11.0",
     "rimraf": "^2.6.1",
     "tmodjs": "^1.0.4"
   }
