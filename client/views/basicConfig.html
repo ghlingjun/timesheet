@@ -2,68 +2,58 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>工时系统</title>
+    <title>{{title}}</title>
     <link rel="import" href="base/_header_css.html?__inline">
     <style>
         dd {margin: 10px 0}
+        .basicBox {padding:10px }
         .txtDefault {width:100px;display: inline-block;vertical-align: middle}
         .ruleBox {border: 1px solid #c0c0c0;text-align: left;padding: 5px;border-radius: 5px;}
+        .basicTb {border:1px solid #c0c0c0}
+        .basicTb tr {border-top:1px solid #ddd; }
+        .basicTb tr td {vertical-align: middle;padding:5px;}
     </style>
+
 </head>
 <body>
 <link rel="import" href="base/header.html?__inline">
 <div class="basicBox">
-    <dl class="dl-horizontal">
-        <dt>起始日期</dt>
-        <dd><input type="text"  autocomplete="off" class="form-control startDate wdate"></dd>
-        <dt>工时周期</dt>
-        <dd><input type="text" class="form-control timeWeek"  placeholder="" ></dd>
-        <dt>提交规则</dt>
-        <dd>
-            <div class="ruleBox">
-                <div>提交逾期：每个周期结束后&nbsp;<input type="text" class="form-control overdueWeek txtDefault"  placeholder=""
-                        >&nbsp;天内必须提交，否则视为逾期</div>
-                <div>可提前提交： <div style="display: inline-block"><input type="checkbox" />是
-                    <input type="checkbox">否</div></div>
+    <div style="text-align: right;margin:5px 0 10px 0;">
+        <button type="button" class="btn btn-info btn-sm editBtn" data-permission="17">编辑</button>
+        <button type="button" class="btn btn-info btn-sm saveBtn" style="display: none;">保存</button>
+    </div>
+    <table data-striped="true" style="text-align:left;width:100%;" class="basicTb table-hover" >
+        <tr><td width="90">起始日期
+        </td><td><input type="text"  autocomplete="off" class="form-control startDate wdate"
+                        style="width:98%;display:inline-block;">&nbsp;<span class="mustStar">*
+        </span></td></tr>
+        <tr><td>工时周期</td><td><span class="weekTime"><input type="radio" name="weekT" value="week"/>每周&nbsp;<input
+                type="radio"
+                                                                                                     name="weekT"
+                value="twoweek"
+        />2周&nbsp;
+            <input type="radio" name="weekT" value="month"/>每月
+        </span></td></tr>
+        <!--<tr><td>可批量提交</td><td><input type="radio" name="blsub" value="yes"/>是&nbsp;&nbsp;<input type="radio"
+                                                                                                name="blsub"
+                                                                                                value="no"/>否&nbsp;&nbsp;&nbsp;每个周期结束后 <input type="text" class="form-control weekEndDL txtDefault"/> 天内必须提交，否则视为逾期
+        </td></tr>-->
+        <tr><td>可提前提交</td><td><span class="canSub"><input type="radio" name="submitCan"
+                                                  class="checkedSub subYes"  value="true"/>是&nbsp;&nbsp;<input
+                type="radio" name="submitCan" class="checkedSub subNo" value="false">否</span></td></tr>
+        <tr><td>提交逾期</td><td>每个周期结束后 <input type="text" class="form-control deadLine txtDefault"
+                                    placeholder="">&nbsp;天内必须提交，否则视为逾期&nbsp;<span class="mustStar">*
+        </span></td></tr>
+        <!--<tr><td>审核逾期</td><td> 每月必须<input type="text" class="form-control overdueWeek txtDefault"  placeholder=""
+        >&nbsp;前（含当天），完成工时审核</td></tr>-->
+        <tr style="display:none"><td>导出工时表</td><td><input type="text"  autocomplete="off"
+                                                          class="form-control startOut wdate txtDefault">&nbsp;至&nbsp;<input type="text"   autocomplete="off" class="form-control endOut wdate txtDefault">&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-sm outExcel">导出Excel</button></td></tr>
+    </table>
 
-<<<<<<< HEAD
-                <div>审核逾期：每月必须&nbsp;<input type="text" class="form-control overdueWeek txtDefault"  placeholder="">&nbsp;日前（含当天）完成工时审核</div>
-            </div>
-        </dd>
-        <dt>导出工时表：</dt>
-        <dd><input type="text"  autocomplete="off" class="form-control startDate wdate txtDefault">&nbsp;至&nbsp;<input type="text"   autocomplete="off" class="form-control startDate wdate txtDefault">&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-sm">导出Excel</button></dd>
-=======
-                <div>审核逾期：每月必须&nbsp;<input type="text" class="form-control overdueWeek txtDefault"  placeholder=""
-                        >&nbsp;日前（含当天）完成工时审核</div>
-            </div>
-        </dd>
-        <dt>导出工时表：</dt>
-        <dd><input type="text"  autocomplete="off"
-                   class="form-control startDate wdate txtDefault">&nbsp;至&nbsp;<input type="text"   autocomplete="off" class="form-control startDate wdate txtDefault">&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-sm">导出Excel</button></dd>
->>>>>>> acf094f771bdabc579c1881d6634894df92b2c8e
-    </dl>
 </div>
 
 <!-- 添加当前模板js -->
 <link rel="import" href="base/_footer_js.html?__inline">
 <script src="../assets/js/pages/basicConfig.js"></script>
-<script>
-    $(document).ready(function(){
-        $('input[type="checkbox"]').iCheck({
-            checkboxClass: 'icheckbox_polaris',
-            radioClass: 'iradio_polaris',
-            increaseArea: '-10' // optional
-        });
-
-        //日期
-        $(".wdate").datetimepicker({
-            format: 'yyyy-mm-dd',
-            minView: 2,
-            language: "zh-CN",
-            autoclose: true
-        })
-    });
-
-</script>
 </body>
 </html>

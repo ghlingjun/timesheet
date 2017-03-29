@@ -30,6 +30,7 @@ node_modules
 
 /release
 /.vscode
+js/build/.cache
 /server/views
 /server/public
 /server/views

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="import" href="base/_header_css.html?__inline">
+</head>
+<body>
+<link rel="import" href="base/header.html?__inline">
+<div class="planTask" style="padding: 10px;position:relative;">
+    <div class="planInfo">
+        <span class="bt">计划名称：</span><span>{{planName}}</span>
+        <span class="bt">负责人：</span><span>{{managerName}}</span>
+        <span class="bt">版本名称：</span><span>{{versionName}}</span>
+        <span class="bt">提交时间：</span><span>{{submitTime}}</span>
+    </div>
+    <div id="toolbar">
+            <button type="button" class="btn btn-primary btn-sm" data-target="#myModal2" data-toggle="modal">新增任务</button>
+    </div>
+    <div id="toolbar2" style="position:absolute;right: 66px;top:40px;">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal7">驳回</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal8">通过审核</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal3">审批情况</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal5">计划变更</button>
+    </div>
+    <table id="planTask"  data-classes="table table-hover table-condensed" data-show-columns="true" data-striped="true" data-toolbar="#toolbar" >
+        <thead>
+        <tr>
+            <th data-field="taskConfigCode" data-formatter="nameFormatter">任务编号</th>
+            <th data-field="taskConfigName">任务</th>
+            <th data-field="unit">单位</th>
+            <th data-field="functionTeamName">角色</th>
+            <th data-field="numberOfPeople">人数</th>
+            <th data-field="workHour">预计总工时</th>
+            <th data-field="">备注</th>
+            <th data-field="softwareAlias" data-formatter="actionFormatter" data-events="actionEvents">操作</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<!-- 新增任务 2-->
+<link rel="import" href="modal/addTask.html?__inline">
+<!-- 审批情况 3-->
+<link rel="import" href="modal/approvalInfo.html?__inline">
+<!-- 编辑计划 5-->
+<link rel="import" href="modal/editPlan.html?__inline">
+<!-- 驳回 7-->
+<link rel="import" href="modal/planTaskModal/approvalReject.html?__inline">
+<!-- 通过 8-->
+<link rel="import" href="modal/planTaskModal/approvalPass.html?__inline">
+<!-- 提交计划 -->
+<link rel="import" href="modal/submitPlan.html?__inline">
+<!-- 添加当前模板js -->
+<link rel="import" href="base/_footer_js.html?__inline">
+<link type="text/css" rel="stylesheet"  href="../assets/css/pages/planTask.less">
+<script src="../assets/js/pages/planTask.js"></script>
+</body>
+</html>

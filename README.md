@@ -1,5 +1,4 @@
-﻿## tm_timesheet 
-又更新了下
+﻿## tm_timesheet
 
 工时项目
 git 地址：http://192.168.1.207:1111/summary/tm_timesheet.git
@@ -22,8 +21,12 @@ http://127.0.0.1:88/
 ================================================
 
 引用类库：jquery,bootstrap,相关插件
- 
+
+UI框架bootstrap：http://www.bootcss.com/
 表格bootstrap-table：http://bootstrap-table.wenzhixin.net.cn/examples/
+日期bootstrap-datetimepicker：http://www.bootcss.com/p/bootstrap-datetimepicker/
+单选复选框icheck：http://www.bootcss.com/p/icheck/
+下拉选择select2：https://select2.github.io/examples.html
 
 字体库引用路径：http://www.fontawesome.com.cn/faicons/
 
@@ -38,7 +41,6 @@ http://127.0.0.1:88/
 *异步渲染模板路径(首屏渲染支持公用)：client/views/templates/tpl/**.html
 
 Node端目录server
-
 路由目录：server/routes/**.js
 
 执行批处理文件：node自动编译_www本地.bat

@@ -24,24 +24,6 @@ router.post('/origUserAuth.do', function(req, res, next) {
     var nonce = req.headers['tm-header-nonce'];
     var curTime = req.headers['tm-header-curtime'] || new Date().getTime();
     var signature = req.headers['tm-header-signature'];
-    //redis
-    /*var db = require('../model/redis');
-    //设置值
-    db.setObject('test_companyId',{companyid:companyId,userid:userId}, '360000', function(err,result){
-        if (err) {
-            console.log(err);
-            return;
-        }
-        console.log('插入数据结果obj:', result);
-    })
-
-    db.getObject('test_companyId', function(err,result){
-        if (err) {
-            console.log(err);
-            return;
-        }
-        console.log("db7777:"+JSON.stringify(result));
-    })*/
 
     var userInfo = {
         companyId:companyId,
@@ -55,7 +37,11 @@ router.post('/origUserAuth.do', function(req, res, next) {
         callback:function (result) {
             //req.session.userInfo = userInfo;
             //config.userInfo = userInfo; maxAge:360*1000,
-            res.cookie('tms', 'companyid='+userInfo.companyId+'&userid='+userInfo.userId, {
+            userInfo.refreshToken = result.refreshToken;
+            userInfo.accessToken = result.accessToken;
+            userInfo.tokenType = result.tokenType;
+            userInfo.softwareCode = "WHK";
+            res.cookie('userInfo', JSON.stringify(userInfo), {
                 path:'/', httpOnly:true
             });
             res.json(result);

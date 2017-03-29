@@ -201,6 +201,12 @@ var tms = tms || {};
         ajaxSend.post(params, path);
     };
 
+    //工时填报更早的清单
+    this.services.workPeriodSheetEarlyDate = function(params){
+        var path = ajax_host + me.urls.workhour.workPeriodSheetEarlyDate;
+        ajaxSend.post(params, path);
+    };
+
     //工时明细数据保存
     this.services.workPeriodSheetItemSave = function(params){
         var path = ajax_host + me.urls.workhour.workPeriodSheetItemSave;
@@ -235,8 +241,41 @@ var tms = tms || {};
         var path = ajax_host + me.urls.workhour.planConfigList;
         ajaxSend.post(params, path);
     };
-
-
+    //审批情况
+    this.services.approvalProcessList=function (params) {
+        var path = ajax_host + me.urls.workhour.approvalProcessList;
+        ajaxSend.post(params, path);
+    }
+    //角色列表
+    this.services.authorityRoleList=function (params) {
+        var path=ajax_host+me.urls.identity.authorityRoleList;
+        ajaxSend.post(params,path);
+    }
+    //计划审核列表
+    this.services.planVersionApprovalList=function (params) {
+        var path=ajax_host+me.urls.workhour.planVersionApprovalList;
+        ajaxSend.post(params,path);
+    }
+    //用户列表
+    this.services.origUserList=function (params) {
+        var path=ajax_host+me.urls.identity.origUserList;
+        ajaxSend.post(params,path);
+    }
+    //用户列表
+    this.services.authorityRoleAdd=function (params) {
+        var path=ajax_host+me.urls.identity.authorityRoleAdd;
+        ajaxSend.post(params,path);
+    }
+    //用户列表
+    this.services.authorityRoleDel=function (params) {
+        var path=ajax_host+me.urls.identity.authorityRoleDel;
+        ajaxSend.post(params,path);
+    }
+    //用户列表
+    this.services.authorityRoleRightAdd=function (params) {
+        var path=ajax_host+me.urls.identity.authorityRoleRightAdd;
+        ajaxSend.post(params,path);
+    }
 	//第一种方式：方法名对应接口传参中的head.oper值，head.oper可以不传
 	//如果传递了优先取传参中的head.oper
 	/*this.services.periodRuleDetail = function(params) {

@@ -8,9 +8,9 @@
 <body>
 <link rel="import" href="base/header.html?__inline">
 <div class="projectTable" style="padding: 10px;">
-    <div>
+    <div style="height: 35px;">
         <div class="form-group" style="width: 200px;margin: 0;display: inline-block;">
-        <select class="form-control" onchange="selectOnchang(this.value)">
+        <select class="form-control selectProject" onchange="selectOnchang(this.value)">
             {{include './templates/tpl/projectOption' data}}
         </select>
     </div>
@@ -18,25 +18,17 @@
             {{include './templates/tpl/planVersion' data}}
         </div>
         <div style="float:right;">
-            <button type="button" class="btn btn-default">更新版本</button>
+            <button type="button" class="btn btn-primary" id="updateVersion">更新版本</button>
         </div>
     </div>
     <div id="toolbar">
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal2">新增任务</button>
-        <button type="button" class="btn btn-default">修改任务</button>
-        <button type="button" class="btn btn-default">删除任务</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">新增任务</button>
     </div>
-    <div class="toolbar" style="position: absolute;top:143px;right: 66px;">
-        <span class="notUpdateStatus">
-            <button type="button" class="btn btn-default">导出</button>
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal3">审批情况</button>
-        </span>
-        <span class="updateStatus" style="display: none">
-            <button type="button" class="btn btn-default">保存</button>
-            <button type="button" class="btn btn-default">取消</button>
-        </span>
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">提交计划</button>
-        <button type="button" class="btn btn-default">编辑计划</button>
+    <div class="toolbar" style="position: absolute;top:145px;right: 66px;">
+        <button type="button" class="btn btn-primary">导出</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">审批情况</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">提交计划</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5">编辑计划</button>
     </div>
     <table id="projectList"  data-classes="table table-hover table-condensed" data-striped="true"  data-show-columns="true" data-toolbar="#toolbar" data-click-to-select="true">
         <thead>
@@ -48,18 +40,41 @@
             <th data-field="numberOfPeople">人数</th>
             <th data-field="workHour">预计总工时</th>
             <th data-field="">备注</th>
-            <th data-field="softwareAlias">操作</th>
+            <th data-field="softwareAlias" data-formatter="actionFormatter" data-events="actionEvents">操作</th>
         </tr>
         </thead>
     </table>
+    <div class="divFlex">
+        <div class="flex1"></div>
+        <div class="flex2">
+            <button class="btn btn-primary">返回项目</button>
+        </div>
+    </div>
 </div>
-<!-- 弹出框 -->
+<!-- confirm -->
+<div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:1051;">
+    <div class="modal-dialog" style="width: 320px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel6">更新版本</h4>
+            </div>
+            <div class="modal-body">确认更新版本吗？</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">确认</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 <!-- 提交计划 -->
-<link rel="import" href="projectTaskMotal/projectSubPlan.html?__inline">
-<!-- 新增任务 -->
-<link rel="import" href="projectTaskMotal/projectAddTask.html?__inline">
-<!-- 审批情况 -->
-<link rel="import" href="projectTaskMotal/approvalInfo.html?__inline">
+<link rel="import" href="modal/submitPlan.html?__inline">
+<!-- 新增任务 2-->
+<link rel="import" href="modal/addTask.html?__inline">
+<!-- 审批情况 3-->
+<link rel="import" href="modal/approvalInfo.html?__inline">
+<!-- 编辑计划 5-->
+<link rel="import" href="modal/editPlan.html?__inline">
 <!-- 添加当前模板js -->
 <link rel="import" href="base/_footer_js.html?__inline">
 <link type="text/css" rel="stylesheet"  href="../assets/css/pages/projectTask.less">

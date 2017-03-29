@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="import" href="base/_header_css.html?__inline">
+</head>
+<body>
+<link rel="import" href="base/header.html?__inline">
+<div class="planApproval" style="padding: 10px;position:relative;">
+    <div id="toolbar">
+            <select class="search1" style="width:120px;">
+                <option value="0">全部</option>
+                <option value="1">已处理</option>
+                <option value="2">未处理</option>
+            </select>
+            <select class="search2" style="width:120px;">
+                <option value="">全部</option>
+                {{include './templates/tpl/projectOption' data}}
+            </select>
+            <button type="button" class="btn btn-primary btn-sm" onclick="searchPlan()">搜索</button>
+    </div>
+    <div id="toolbar2" style="position:absolute;right: 10px;top:19px;">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal7">驳回</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal8">通过审核</button>
+    </div>
+    <table id="planApproval"  data-classes="table table-hover table-condensed" data-striped="true" data-toolbar="#toolbar" >
+        <thead>
+        <tr>
+            <th data-checkbox="true"></th>
+            <th data-field="planVersionProjectName" data-formatter="nameFormatter">项目名称</th>
+            <th data-field="planVersionVersionName">版本名称</th>
+            <th data-field="approvalSubmitUser">提交人</th>
+            <th data-field="approvalCreateTime">提交时间</th>
+            <th data-field="planBriefBiddingParty">申办方</th>
+            <th data-field="planVersionStudyStage">研究分期</th>
+            <th data-field="planVersionManageName">负责人</th>
+            <th data-field="approvalSubmitStatus" data-formatter="statusFormatter">审核状态</th>
+            <th data-field="approvalFinishTime">通过时间</th>
+            <th data-formatter="actionFormatter" data-events="actionEvents">操作</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 330px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel7">处理结果--驳回</h4>
+            </div>
+            <div class="modal-body">
+                <div class="reject-or-pass">
+                    <ul>
+                        <li>
+                            <span class="bt">审核意见：</span>
+                            <textarea class="form-control approval-opinion"></textarea>
+                        </li>
+                        <li>
+                            <span class="bt">密码：</span>
+                            <input type="password" class="form-control approval-password" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="approvalReject()">通过</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal fade" id="myModal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 330px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel8">处理结果--通过</h4>
+            </div>
+            <div class="modal-body">
+                <div class="reject-or-pass">
+                    <ul>
+                        <li>
+                            <span class="bt">审核意见：</span>
+                            <textarea class="form-control approval-opinion"></textarea>
+                        </li>
+                        <li>
+                            <span class="bt">密码：</span>
+                            <input type="password" class="form-control approval-password" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">上级继续审核</button>
+                <button type="button" class="btn btn-primary" onclick="approvalPass()" >通过</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- 审批情况 3-->
+<link rel="import" href="modal/approvalInfo.html?__inline">
+<!-- 提交计划 -->
+<link rel="import" href="modal/submitPlan.html?__inline">
+<!-- 添加当前模板js -->
+<link rel="import" href="base/_footer_js.html?__inline">
+<link type="text/css" rel="stylesheet"  href="../assets/css/pages/planTask.less">
+<script src="../assets/js/pages/planApproval.js"></script>
+</body>
+</html>

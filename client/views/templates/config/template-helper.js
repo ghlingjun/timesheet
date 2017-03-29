@@ -1,4 +1,7 @@
-
+template.helper('testFunc', function (arg1, arg2) {
+    console.log(arg1,arg2);
+    return '223'
+})
 template.helper('dateFormat', function (date, format) {
     console.log(date,format);
     date = new Date(date);

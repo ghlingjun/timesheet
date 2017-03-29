@@ -16,43 +16,57 @@ router.get('/:projectTask', function(req, res, next) {
         title: '工时项目',
         time: (new Date).toString(),
     };
-  /*  var opts1={
-        method:"POST",
-        uri:"http://127.0.0.1:91/workhour/projectquery.do",
-        json:true
-    };
-    var opts2={
-        method:"POST",
-        uri:"http://127.0.0.1:91/workhour/planBriefQuery.do",
-        json:true
-    };
-    var rp1=rp(opts1);
-    var rp2=rp(opts2);
-    Promise.all([rp1,rp2]).then(function(datas){
-        data.list1=datas[0];
-        data.list2=datas[1];
-        var html=template("projectTask",data);
-        res.send(html);
-    });*/
+    var userInfo=JSON.parse(req.cookies.userInfo);
+    var projectId=req.query.id;
+    var softwareCode=userInfo.softwareCode;
+    var accrssToken=userInfo.accessToken;
+    var tokenType=userInfo.tokenType;
     config.requestPromise({
         req:req,
         urls:[{
-            originalUrl:urls.workhour.projectQuery
+            originalUrl:urls.workhour.projectQuery,
+            body:{
+                softwareCode:softwareCode,
+                accessToken:accrssToken,
+                tokenType:tokenType
+            },
         },{
-            originalUrl:urls.workhour.planBriefQuery
+            originalUrl:urls.workhour.planVersionQuery,
+            body:{
+                "projectId": projectId,
+                "pageIndex": 1,
+                "pageSize": 25
+            }
         }],
         callback:function (datas) {
-            data.list1=datas[0];
-            data.list2=datas[1];
+            data.list1=datas[0].projects;
+            data.list2=datas[1].data;
             var html=template("projectTask",data);
             res.send(html);
         }
     })
+});
+router.get('/:changeTrace', function(req, res, next) {
+    var path=req.params.path;
+    var id=path.id;
+    var data = {
+        title: '工时项目',
+        time: (new Date).toString(),
+    };
+    config.syncRequest({
+        req:req,
+        originalUrl:urls.workhour.projectQuery,
+        body:{id:id},
+        callback:function (data) {
+            var html = template('projectTaskMotal/changeTrace', {list:data});
+            res.send(html);
+        }
+    });
     /*request(opts,function (error,response,body) {
-        data.list=body;
-        var html=template("projectTask",data);
-        res.send(html);
-    })*/
+     data.list=body;
+     var html=template("projectTask",data);
+     res.send(html);
+     })*/
 
 });
 module.exports = router;

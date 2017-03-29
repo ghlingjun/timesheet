@@ -4,21 +4,40 @@
         <h1><img src="../../assets/images/logo.png" alt="logo" class="logo"></h1>
         <div class="userMessage">
             <ul>
-                <li>欢迎：不拿徐</li>
-                <li>当前研究中心：广州某研究中心</li>
-                <li class="password"><a href="javascript:">修改密码</a></li>
-                <li class="login-out"></li>
+                <li>欢迎：<span id="userName"></span></li>
+                <li>当前公司：<span id="companyName"></span></li>
+                <!--<li class="password"><a href="javascript:">修改密码</a></li>-->
+                <li class="login-out"><a href="/logout" style="display: inline-block;width: 30px;height: 50px;"></a></li>
             </ul>
         </div>
     </div>
-    <nav>
-        <ul>
-            <li><a href="../projectList">项目列表</a></li>
-            <li><a href="javascript:">计划审核</a></li>
-            <li><a href="javascript:">工时填报</a></li>
-            <li class="active"><a href="../timeAudit">工时审核</a></li>
-            <li><a href="javascript:">工时统计</a></li>
-            <li><a href="javascript:">基础配置</a></li>
+    <nav style="overflow: visible">
+        <ul class="navBox">
+            <li data-url="projectList" data-permission="1"  >
+                <a href="../projectList">项目列表</a>
+            </li>
+            <li data-url="planApproval">
+                <a href="../planApproval">计划审核</a>
+            </li>
+            <li data-url="timeFill" data-permission="7" >
+                <a href="../timeFill">工时填报</a>
+            </li>
+            <li data-url="timeAudit">
+                <a href="../timeAudit">工时审核</a>
+            </li>
+            <!--<li data-url="timeCharts" data-permission="11" >
+                <a href="../timeCharts">工时统计</a>
+            </li>-->
+            <li style="position:relative;" class="dropLi" data-url="basicConfig"
+                data-permission="14">
+                <a href="../basicConfig">基础配置</a>
+                <dl class="dropDown" >
+                    <dt data-permission="15"><a href="../basicConfig">规则设置</a></dt>
+                    <dt data-permission="19"><a href="../basicConfig/taskConfig">任务配置</a></dt>
+                    <dt data-permission="22"><a href="../basicConfig/versionName">词典管理</a></dt>
+                    <dt data-permission="25"><a href="../basicConfig/rightsAllotment">权限分配</a></dt>
+                </dl>
+            </li>
         </ul>
     </nav>
 </header>

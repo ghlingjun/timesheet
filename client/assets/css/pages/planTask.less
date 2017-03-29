@@ -1,0 +1,83 @@
+
+.approval-opinion{
+  width: 300px;
+  height:100px;
+  resize: none;
+}
+.approval-password{
+  width: 300px;
+}
+.planInfo{
+
+  span.bt{
+    color: #000;
+    margin-left: 15px;
+  }
+}
+//审批情况弹框
+.approval-list{
+  color:#000;
+  height: 700px;
+  overflow-y: auto;
+  .approval-item{
+    margin-bottom: 5px;
+    height: 30px;
+    overflow: hidden;
+    transition-delay: 0.3s;
+    .title{
+      position: relative;
+      span{
+        display:inline-block;
+        background-color: #fff;
+        padding-right: 10px;
+      }
+      hr{
+        margin-top: -10px;
+      }
+      .flex{
+        cursor:pointer;
+        position: absolute;
+        top:3px;
+        right:0;
+      }
+    }
+    .approval-info{
+      margin-bottom: 5px;
+      li{
+        background-color: #F5F9FC;
+        border-bottom: 1px solid #fff;
+        span{
+          height:30px;
+          line-height:30px;
+          display: inline-block;
+          border-left: 1px solid #fff;
+        }
+        span.bt{
+          width: 110px;
+          padding-right: 10px;
+          text-align: right;
+          background-color: #97A5B2;
+        }
+        span.approval-text{
+          text-align: left;
+          width:160px;
+          padding-left: 10px;
+        }
+      }
+    }
+    .approval-submit-info{
+      li{
+        span.bt{
+          background-color: #97A5B2;
+        }
+      }
+    }
+    .approval-task-info{
+      li{
+        span.bt{
+          background-color: #E6EAED;
+        }
+      }
+    }
+  }
+}

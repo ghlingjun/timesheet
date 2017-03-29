@@ -1,0 +1,42 @@
+.modal-body{
+  &:after{
+    content:"";
+    clear: both;
+    display: block;
+  }
+  .bt{
+    color: #000;
+  }
+  .user-list{
+    width: 200px;
+    height:270px;
+    border: 1px solid #ddd;
+    padding:8px;
+    .checkbox-group{
+      margin-top: 20px;
+      height: 200px;
+      overflow-y: auto;
+      .checkbox{
+        margin-top: 0;
+      }
+    }
+  }
+}
+.role-info,.already-users,.put-out,.cannot-users{
+  float: left;
+}
+.already-users{
+  margin-left: 60px;
+}
+.put-out{
+  margin:60px 10px 0;
+  button{
+    margin-bottom: 30px;
+  }
+}
+.checkbox-inline{
+  input[type=checkbox]{
+    margin-top: 4px !important;
+    margin-left: -20px!important;
+  }
+}

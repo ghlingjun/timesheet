@@ -1,5 +1,54 @@
 <script src="../../assets/libs/jquery/jquery-2.2.4.js"></script>
 <script src="../../assets/libs/bootstrap/js/bootstrap.js"></script>
 <script src="../../assets/libs/bootstrap-datepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="../../assets/libs/bootstrap-table/bootstrap-table.js"></script>
+<script src="../../assets/libs/bootstrap-table/bootstrap-table-zh-CN.js"></script>
+<script src="../../assets/libs/fixed-columns/bootstrap-table-fixed-columns.js"></script>
+<script src="../../assets/libs/icheck/icheck.js"></script>
+<script src="../../assets/libs/jquery/jquery.serializejson.js"></script>
+<script src="../../assets/libs/select2/js/select2.js"></script>
+<script src="../../assets/libs/tree-column/bootstrap-table-tree-column.js"></script>
 <script src="../../assets/js/build/template.js"></script>
 <script src="../../assets/js/tms.js"></script>
+<script src="../../assets/js/modules/RCommon/RCommon-0.4.9.js"></script>
+<script src="../../assets/js/modules/RResize/RResize-0.6.6.js"></script>
+<script>
+    $(function () {
+        //导航的下拉
+        $('.dropLi').on('mouseenter',function () {
+            $(this).find('.dropDown').stop(false,true).slideDown(150)
+        }).on('mouseleave',function () {
+            $(this).find('.dropDown').stop(false,true).slideUp(150)
+        });
+
+
+        //日期
+        $(".wdate").datetimepicker({
+            format: 'yyyy-mm-dd',
+            minView: 2,
+            language: "zh-CN",
+            autoclose: true
+        });
+
+        var userInfo = tms.getLocalStorage("userInfo",true);
+        $("#userName").text(userInfo.userName);
+        $("#companyName").text(userInfo.companyName);
+
+        //temp
+        var userPermission = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28];//userInfo.permission;
+        var modules = $("[data-permission]");
+        for(var i=0,len = modules.length;i<len;i++) {
+            var item = modules[i];
+            var permission = $(item).attr("data-permission");
+            if(userPermission.indexOf(Number(permission)) < 0){
+                $(item).hide();
+            }
+        }
+
+    });
+
+    //导航的选中
+    function navActive(url) {
+        $(".navBox li[data-url="+url+"]").addClass('active').siblings().removeClass('active');
+    }
+</script>

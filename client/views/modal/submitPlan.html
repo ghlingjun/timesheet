@@ -1,0 +1,37 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">提交计划</h4>
+            </div>
+            <div class="modal-body">
+                <table id="submitPlan" data-height="600"  data-classes="table table-hover table-condensed" data-striped="true"  data-click-to-select="true">
+                    <thead>
+                        <tr>
+                            <th data-checkbox="true"></th>
+                            <th data-field="UserName">姓名</th>
+                            <th data-field="RoleName">角色</th>
+                            <th data-formatter="wayFormatter" data-events="selectEvent">方式</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <div style="display: inline-block">
+                    <span>审查方式：</span>
+                    <div class="form-group" style="width: 200px;margin: 0;display: inline-block;">
+                        <select class="form-control approval-way">
+                            <option value="2">任一通过</option>
+                            <option value="1">全部通过</option>
+                        </select>
+                    </div>
+                    <div class="checkbox approval-urgent" style="display: inline-block">
+                        <label><input class="approval-urgent" type="checkbox" value="1">加急</label>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary approval-pass-next" onclick="submitPlan()">保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>

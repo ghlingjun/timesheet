@@ -26,13 +26,12 @@
       background: url(../../images/loginout-icon.png) 0 center no-repeat;
       width:29px;
       height:50px;
-      padding-left:20px;
+      /*padding-left:20px;*/
       cursor: pointer;
     }
   }
 }
 nav{
-  overflow: hidden;
   background:#263646;
   height:39px;
   line-height:39px;
@@ -45,6 +44,8 @@ nav{
     color:#fff;
     text-decoration: none;
   }
+  ul li {
+    float: left;}
   ul li a{
     display: block;
     float:left;
@@ -56,22 +57,31 @@ nav{
       color: #fff;
       text-decoration: none;
     }     /* 未访问的链接 */
-    &:visited {
-      color: #fff;
-      text-decoration: none;
-    }  /* 已访问的链接 */
+
     &:hover {
       background: #00a2d9;
       color: #fff;
       text-decoration: none;
     }    /* 当有鼠标悬停在链接上 */
-    &:active {
-      color: #fff;
-      text-decoration: none;
-    }   /* 被选择的链接 */
-    &:visited{
-      color:#fff;
-      text-decoration: none;
-    }
+
+  }
+
+  .dropDown{
+    position: absolute;
+    display: none;
+    background: #fff;
+    width: 100%;
+    border: 1px solid #c0c0c0;
+    top: 38px;
+    border-top: none;
+    color: #543C3C;
+    z-index: 99;
+    padding: 5px 0;
+  }
+  li .dropDown dt a {color:#333;padding:2px 0;background: none}
+  .dropDown a:hover  {
+    background: #00A2D9;
+    color: #fff;
   }
 }
+

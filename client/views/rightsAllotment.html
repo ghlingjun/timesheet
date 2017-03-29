@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="import" href="base/_header_css.html?__inline">
+</head>
+<body>
+<link rel="import" href="base/header.html?__inline">
+<div class="projectTable" style="padding: 10px;">
+    <div id="toolbar">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal10">新建角色</button>
+    </div>
+    <table id="rightsAllotment"  data-classes="table table-hover table-condensed" data-striped="true"  data-show-columns="true" data-toolbar="#toolbar" data-click-to-select="true">
+        <thead>
+        <tr>
+            <th data-field="roleName" >角色名称</th>
+            <th data-field="roleMemo">备注</th>
+            <th data-formatter="usersFormatter">人员管理</th>
+            <th data-formatter="rightsFormatter" data-events="rightEvent">权限管理</th>
+            <th data-formatter="actionFormatter" data-events="actionEvents">操作</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<!-- 权限分配 -->
+<div class="modal fade" id="myModal9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:1051;">
+    <div class="modal-dialog" style="width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel9">权限分配</h4>
+            </div>
+            <div class="modal-body">
+                <table id="rightTable" data-classes="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th data-field="rightName" data-width="100">模块</th>
+                            <th data-field="rightChildName" data-width="100">子模块</th>
+                            <th data-formatter="itemFormatter">权限</th>
+                        </tr>
+                    </thead>
+                </table>
+                <label class="checkbox-inline">
+                    <input type="checkbox" class="only-look" value="option3">只查看
+                </label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="saveRights()">确认</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- 新建角色 -->
+<div class="modal fade" id="myModal10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:1051;">
+    <div class="modal-dialog" style="width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel10">新建角色</h4>
+            </div>
+            <div class="modal-body">
+                <div class="role-info">
+                    <span class="bt">角色名称：</span>
+                    <input type="text" class="form-control" id="roleName"/>
+                    <span class="bt">备注：</span>
+                    <textarea class="form-control" id="roleMemo"></textarea>
+                </div>
+                <div class="already-users">
+                    <span class="bt">已入组人员：</span>
+                    <div class="user-list">
+                        <input type="text" class="form-control" onkeyup="enterPress(this)" />
+                        <div class="checkbox-group"></div>
+                    </div>
+                </div>
+                <div class="put-out">
+                    <div><button class="btn btn-default btn-xs" onclick="shift_in()">移入</button></div>
+                    <div><button class="btn btn-default btn-xs" onclick="shift_out()">移出</button></div>
+                </div>
+                <div class="cannot-users">
+                    <span class="bt">未入组人员：</span>
+                    <div class="user-list">
+                        <input type="text" class="form-control" onkeyup="enterPress(this)" />
+                        <div class="checkbox-group"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="saveRole()">确认</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- 添加当前模板js -->
+<link rel="import" href="base/_footer_js.html?__inline">
+<link type="text/css" rel="stylesheet"  href="../assets/css/pages/rightsAllotment.less">
+<script src="../assets/js/pages/rightsAllotment.js"></script>
+</body>
+</html>

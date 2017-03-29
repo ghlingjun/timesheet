@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="import" href="base/_header_css.html?__inline">
+    <link rel="stylesheet" href="../assets/css/pages/taskConfig.less">
+</head>
+<body>
+    <link rel="import" href="base/header.html?__inline"> 
+    
+    <!-- 任务配置 -->
+    <div id="taskc" class="container-fluid">
+        <span class="btn btn-primary button-add" data-toggle="modal" data-target="#taskConfig">新增任务</span>
+        <!-- 表格主体 -->
+        <div class="udt-w">
+            <div class="udt">
+                <div class="udt-thead">
+                    <div class="udt-tr">
+                        <div class="udt-th">任务编号</div>
+                        <div class="udt-th">任务名称</div>
+                        <div class="udt-th">是否计费</div>
+                        <div class="udt-th">添加子级</div>
+                        <div class="udt-th">操作</div>
+                    </div>
+                </div>
+                <div class="udt-tbody"></div>
+                <div class="udt-not-info">没有找到匹配的记录</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 编辑弹出框 start -->
+    <div class="modal fade" id="taskConfig" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">新增任务</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert-conti">
+                        <p class="form-group">
+                            <label for="taskCode">任务编号</label>
+                            <input type="taskCode" class="form-control" id="taskCode" placeholder="任务编号">
+                        </p>
+                        <p class="form-group">
+                            <label for="taskName">任务名称</label>
+                            <input type="taskName" class="form-control" id="taskName" placeholder="任务名称">
+                        </p>
+                        <p class="form-group">
+                            <label>是否计费　</label>
+                            <span style="display: inline-block;width: 50px;"><input type="radio" name="charge" value="1"> 是</span>
+                            <span style="display: inline-block;"><input type="radio" name="charge" value="0"> 否</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary modal-btn-cont">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 编辑弹出框 end -->
+
+    <!-- 添加当前模板js -->
+    <link rel="import" href="base/_footer_js.html?__inline">
+    <script src="../assets/js/pages/taskConfig.js"></script>
+</body>
+</html>

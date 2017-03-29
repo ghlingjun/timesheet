@@ -104,54 +104,48 @@ var tms = tms || {};
         return hashInBase64;
     }
 
-    /**
-     * [transferData description 权限数据转换]
-     * @param  {[Array]} Data = [
-     {
-       "ModuleCode": "Course",
-       "ModuleName": "课程管理",
-       "ChildModules": [
-         {
-           "ModuleCode": "CoursePublish",
-           "ModuleName": "发布",
-           "ChildModules": null
-         },
-         {
-           "ModuleCode": "CourseAdd",
-           "ModuleName": "新增",
-           "ChildModules": null
-         },
-         {
-           "ModuleCode": "CourseEdit",
-           "ModuleName": "编辑",
-           "ChildModules": null
-         },
-         {
-           "ModuleCode": "CourseDelete",
-           "ModuleName": "删除",
-           "ChildModules": null
-         }
-       ]
-     }]
-     * @return {[Object]}  {"Course":["CoursePublish","CourseAdd","CourseEdit","CourseDelete"]}
-     */
-    this.transferData = function(data){
-        var auth = {};
-        for(var i=0;i<data.length;i++) {
-            var key = data[i];
-            var code = key.ModuleCode;
-            var child = key.ChildModules;
-            var childA = [];
-            if(child) {
-                for(var j=0;j<child.length;j++){
-                    childA.push(child[j].ModuleCode);
-                }
-            }
-            if(!auth[code]){
-                auth[code] = childA;
-            }
-        }
-        return auth;
+    this.getErrMsg = function(error) {
+        var msg = "";
+        var status = Number(error.status);
+        switch(status) {
+            // 登录
+            case 21:
+                msg = '账号或密码错误!'
+                break;
+            // 基础配置 - 版本;
+            case 111:
+                msg = '版本名称已存在，请重新输入！';
+                break;
+            case 112:
+            case 122:
+            case 128:
+            case 171:
+            case 132:
+            case 141:
+            case 181:
+            case 182:
+
+                msg = '必填项不可为空！';
+                break;
+            // 基础配置 - 职能组
+            case 121:
+                msg = '职能组名称已存在，请重新输入！';
+                break;
+            // 基础配置 - 任务设置
+            case 172:
+            case 174:
+            case 184:
+                msg = '任务编号已存在，请重新输入！';
+                break;
+
+
+            // 不是公开信息，统一处理
+            // 包含：版本状态
+            default:
+                console.log('status: '+ error.status +'<br>errMsg: '+ error.errMsg);
+                break;
+        };
+        return msg;
     }
 
 }).call(tms, jQuery);
@@ -178,7 +172,7 @@ var tms = tms || {};
         }
         $.extend(d, params);
         var html_arr = [
-            '<div class="modal fade" id="modal_dialog_alert" tabindex="-1" role="dialog" >',
+            '<div class="modal fade" id="modal_dialog_alert" tabindex="-1" role="dialog" style="z-index: 99999999;">',
             '<div class="modal-dialog modal-sm modal-center" style="min-width: 400px;">',
             '<div class="modal-content">',
             '<div class="modal-header" style="border-bottom: none;">',
@@ -233,7 +227,7 @@ var tms = tms || {};
         $.extend(d, params);
 
         var html_arr = [
-            '<div class="modal fade" id="modal_dialog_confirm" tabindex="-1" role="dialog" >',
+            '<div class="modal fade" id="modal_dialog_confirm" tabindex="-1" role="dialog" style="z-index: 99999999;">',
             '<div class="modal-dialog modal-sm modal-center" style="min-width: 450px;" >',
             '<div class="modal-content">',
             '<div class="modal-header" style="border-bottom: none;">',
@@ -269,6 +263,66 @@ var tms = tms || {};
             }
         },300);
 
+    };
+
+    /**
+     * [confirm description]
+     * @param  {[type]} params {title,message,cls,}
+     * @return {[type]}        [description]
+     */
+    this.costPopup = function(params, func) {
+        var d = {
+            title: "提示",
+            message: "",
+            cls: "alert-p"
+        };
+        if (typeof params == 'string') {
+            params = {
+                message: params
+            };
+        }else {
+            params.cls = d.cls +" "+params.cls;
+        }
+        $.extend(d, params);
+
+        var html_arr = [
+            '<div class="modal fade" id="modal_dialog_costPopup" tabindex="-1" role="dialog" >',
+            '<div class="modal-dialog modal-sm modal-center" style="min-width: 450px;" >',
+            '<div class="modal-content">',
+            '<div class="modal-header" style="border-bottom: none;">',
+            '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
+            '<h4 class="modal-title" id="gridSystemModalLabel" style="color: #fff;"><span></span>'+d.title+'</h4>',
+            '</div>',
+            '<div class="modal-body">',
+            ' <div class="'+d.cls+'">',
+            ' <div>'+d.message+'</div>',
+            '</div>',
+            ' </div>',
+            ' <div class="modal-footer" style="text-align: center;border-top: none;">',
+            ' <a href="javascript:void(0)" class="ui-btn btn-confirm">确认</a>',
+            ' <a href="javascript:void(0)" class="ui-btn btn-cancel" data-dismiss="modal">取消</a>',
+            ' </div>',
+            ' </div>',
+            ' </div>',
+            '</div>'
+        ];
+        if (document.getElementById("modal_dialog_costPopup")) {
+            var element = document.getElementById("modal_dialog_costPopup");
+            element.parentNode.removeChild(element);
+        }
+        $("body").append(html_arr.join(""));
+
+        setTimeout(function() {
+            $("#modal_dialog_costPopup").modal('show');
+            if(func){
+                $("#modal_dialog_costPopup .btn-confirm").unbind('click').bind('click' , function(){
+                    func(function() {
+                        $("#modal_dialog_costPopup").modal('hide');
+                    });
+                    
+                });
+            }
+        },300);
     };
 
 }).call(tms, jQuery);

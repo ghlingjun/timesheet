@@ -1213,7 +1213,8 @@ if (typeof jQuery === 'undefined') {
 
   $.fn.modal             = Plugin
   $.fn.modal.Constructor = Modal
-
+  //清空焦点事件
+  $.fn.modal.Constructor.prototype.enforceFocus = function () { };
 
   // MODAL NO CONFLICT
   // =================

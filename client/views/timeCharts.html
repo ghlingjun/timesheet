@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>工时系统</title>
+    <link rel="import" href="base/_header_css.html?__inline">
+    <style>
+
+    </style>
+
+</head>
+<body>
+<link rel="import" href="base/header.html?__inline">
+<div class="chartsBox">
+    <div id="container" style="min-width:800px;height:400px"></div><br/>
+    <div id="container2" style="min-width:800px;height:400px"></div>
+</div>
+
+<!-- 添加当前模板js -->
+<link rel="import" href="base/_footer_js.html?__inline">
+<script src="../assets/js/hcharts/code/highcharts.js"></script>
+<script src="../assets/js/hcharts/code/modules/exporting.js"></script>
+<script>
+    $(function () {
+        navActive('timeCharts')
+
+        $('#container').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: '项目计划工时'
+            },
+            xAxis: {
+                categories: ['项目1', '项目2', '项目3', '项目4']
+            },
+            legend: {
+                reversed: true
+            },
+            plotOptions: {
+                series: {
+                    stacking: 'normal'
+                }
+            },
+            colors: ['#28B1FD', '#F3A344', '#F16E6E','#8DD331'],
+            series: [{
+                name: '项目1',
+                data: [5, 3, 4, 7]
+            }, {
+                name: '项目2',
+                data: [2, 8, 3, 2]
+            }, {
+                name: '项目3',
+                data: [3, 4, 4, 2]
+            }, {
+                name: '项目4',
+                data: [7, 2, 5, 7]
+            }]
+        });
+
+
+
+
+        $('#container2').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: '用时统计'
+            },
+            xAxis: {
+                categories: ['项目1', '项目2', '项目3', '项目4']
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '项目工时总计'
+                },
+                stackLabels: {
+                    enabled: true
+                }
+            },
+            legend: {
+                align: 'right',
+                x: -30,
+                verticalAlign: 'top',
+                y: 5,
+                floating: true,
+
+                borderColor: '#CCC',
+                borderWidth: 1,
+                shadow: false
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.x + '</b><br/>' +
+                        this.series.name + ': ' + this.y + '<br/>' +
+                        '总计: ' + this.point.stackTotal;
+                }
+            },
+            colors: ['#28B1FD', '#F3A344', '#F16E6E','#8DD331'],
+            plotOptions: {
+                column: {
+                    stacking: 'normal',
+                    dataLabels: {
+                        enabled: true,
+                        color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+
+                    }
+                }
+            },
+            series: [{
+                name: '小张',
+                data: [5, 3, 4, 7]
+            }, {
+                name: '小彭',
+                data: [2, 5, 3, 8]
+            }, {
+                name: '小潘',
+                data: [3, 4, 4, 2]
+            }, {
+                name: '小赵',
+                data: [9, 3, 7, 2]
+            }]
+        });
+    });
+
+</script>
+</body>
+</html>

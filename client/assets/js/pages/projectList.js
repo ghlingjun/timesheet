@@ -17,7 +17,7 @@ $(function () {
        },
        callback:function (data) {
            projectTable.bootstrapTable({
-               data:data
+               data:data.projects
            })
        }
    })

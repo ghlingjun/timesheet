@@ -1,0 +1,31 @@
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 620px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel3">审批情况</h4>
+            </div>
+            <div class="modal-body">
+                <div class="approval-list">
+
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- 变更痕迹 4-->
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:1051;">
+    <div class="modal-dialog" style="width: 620px;">
+        <div class="modal-content"></div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<script type="text/javascript">
+    //变更痕迹打开
+    function changeTraceClick(id,n) {
+        var names=n;
+        $("#myModal4").modal({
+            show:true,
+            remote: "../modal/changeTrace?id="+id+"&name="+n
+        });
+    }
+</script>

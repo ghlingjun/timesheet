@@ -16,7 +16,6 @@ var tms = tms || {};
 		var _data = {};
 		_data.head = _head;
 		_data.body = _params;*/
-
 		$.ajax({
 			type: ajaxType,
 			url:  _path,
@@ -25,7 +24,7 @@ var tms = tms || {};
 			/*contentType: 'application/json',
 			accepts: "application/json",*/
 			data: _params,//JSON.stringify(_params),
-			timeout: 1000 * 60, //60秒超时
+			timeout: 1000 * 300, //60*5秒超时
 			beforeSend: function(XHR) {
                 var _time = new Date().getTime();
                 var message = {};
@@ -78,6 +77,13 @@ var tms = tms || {};
                         case 500:
                             alert('服务器未响应');
                             break;
+                        //501,自定义api返回错误统一处理
+                        case 501:
+                            var resError = xhr.responseText;
+                            var error = JSON.parse(resError);
+                            // 提示信息筛选器
+                            tms.alert(tms.getErrMsg(error));
+                            break;
                         case 503:
                             alert('服务器不可用');
                             break;
@@ -85,6 +91,10 @@ var tms = tms || {};
                             alert('网关超时');
                             break;
                     }
+                }else {
+                    var errMsg = xhr.getResponseHeader("tm-header-errmsg");
+                    var status = xhr.getResponseHeader("tm-header-status");
+                    tms.alert("status: "+status+"<br>errMsg: "+errMsg);
                 }
                 $.isFunction(options.errCallback) && options.errCallback();
             }

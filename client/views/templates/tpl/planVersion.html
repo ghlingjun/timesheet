@@ -1,1 +1,1 @@
-{{each list2 as value index}}{{if index == 0 }}<span class="hisVersion active"  value="{{value.planVersionId}}">{{value.versionSn}}</span>{{else}}<span class="hisVersion" value="{{value.planVersionId}}">{{value.versionSn}}</span>{{/if}}{{/each}}
+{{each list2 as value index}}{{if value.newestVersion == true }}<span class="hisVersion active" data-id="{{value.planBriefId}}" value="{{value.id}}">{{value.versionSn}}</span>{{else}}<span class="hisVersion" data-id="{{value.planBriefId}}" value="{{value.id}}">{{value.versionSn}}</span>{{/if}}{{/each}}

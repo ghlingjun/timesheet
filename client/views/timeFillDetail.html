@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="import" href="base/_header_css.html?__inline">
+    <link rel="stylesheet" href="../assets/css/pages/timeAuditDetail.less">
+</head>
+<body>
+<link rel="import" href="base/header.html?__inline">
+<!-- 工时审核详细str -->
+<div class="container-fluid">
+    <div class="contral">
+        <div class="fl">
+            <ul>
+                <li>周期名称：<span>{{workPeriodFromDate}} ~ {{workPeriodToDate}}</span></li>
+                <li>总工时：<span>{{workPeriodWorkhours}}</span></li>
+                <li>提交人：<span>{{approvalUser}}</span></li>
+                <li>提交时间：<span>{{approvalSubmitDate}}</span></li>
+                <!--<li>提交逾期：<span>是</span></li>-->
+            </ul>
+        </div>
+        <div class="fr">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal3">审批情况</button>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" data-permission="10">提交</button>
+            <button id="editBtn" type="button" class="btn btn-info" data-permission="9">编辑</button>
+            <button id="backList" type="button" class="btn btn-info">返回列表</button>
+        </div>
+    </div>
+
+    <div class="contralTwo">
+        <div class="fl">
+            <button id="addBtn" type="button" class="btn btn-info">新增任务</button>
+            <!--<button id="modifyBtn" type="button" class="btn btn-info" disabled="true">修改任务</button>-->
+            <button id="deleteBtn" type="button" class="btn btn-warning" disabled="true">删除任务</button>
+        </div>
+        <div class="fr">
+            <button id="save" type="button" class="btn btn-info">保存</button>
+            <button id="cancelBtn" type="button" class="btn btn-info">取消</button>
+        </div>
+    </div>
+
+    <table id="table">
+
+    </table>
+</div>
+
+<!-- 审批情况 3-->
+<link rel="import" href="modal/approvalInfo.html?__inline">
+<!-- 提交计划 -->
+<link rel="import" href="modal/submitPlan.html?__inline">
+<!-- 工时审核详细end -->
+<link rel="import" href="base/_footer_js.html?__inline">
+<script src="../assets/js/pages/timeFillDetail.js"></script>
+<link rel="stylesheet" href="../assets/js/bootstrap-editable/css/bootstrap-editable.css">
+<script src="../assets/js/bootstrap-editable/js/bootstrap-editable.js"></script>
+</body>
+</html>

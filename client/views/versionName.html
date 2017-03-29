@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="import" href="base/_header_css.html?__inline">
+    <style type="text/css">
+        .nav2{ height: 40px; line-height: 40px; text-align: center; border-bottom: 1px solid #d0d0d0; cursor: pointer; }
+        .nav2_hot{ background: #cccccc; }
+        .nav2_now{ background: #9acfea;
+            color: #fff;}
+
+        .vName {
+            border:1px solid #c0c0c0;
+            padding:2px;
+            border-radius:4px;}
+        .table-striped tbody tr td a {color:#333}
+        .btn_up, .btn_down{ display: inline-block; *display:inline; *zoom:1; width: 16px; height: 16px; }
+        .btn_up{ background: url("../assets/images/arrow_up.png"); }
+        .btn_down{ background: url("../assets/images/arrow_down.png"); }
+    </style>
+</head>
+<body>
+<link rel="import" href="base/header.html?__inline">
+<div id="content" style="position: relative; min-height: 500px;">
+    <div style="position: absolute; top:0px; left: 0px; width: 150px; height: 100%; border-right: 1px solid #d0d0d0;">
+        <div class="nav2 nav2_now" url="/basicConfig/versionName">{{title}}</div>
+        <div class="nav2 " url="/basicConfig/functionTeam">职能组</div>
+    </div>
+    <div style="position: absolute; top:10px; left: 160px; right: 10px; height: 100%;">
+        <div style="padding: 5px 0;">
+            <button type="button" class="btn btn-info" onclick="addTr('table')">新增</button>&emsp;
+        </div>
+        <table id="table" >
+            <thead>
+                <tr>
+                    <th data-field="functionTeamSort" data-width="60"></th>
+                    <th data-field="versionName" >名称</th>
+                    <th data-field="operations" data-formatter="actionFormatter" data-width="80">操作</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<link rel="import" href="base/_footer_js.html?__inline">
+
+<script src="../assets/js/pages/versionName.js"></script>
+</body>
+</html>

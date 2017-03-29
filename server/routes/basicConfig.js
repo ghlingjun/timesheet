@@ -9,39 +9,51 @@ var Promise = require('bluebird');
 var request = require('request');
 //var config=require('../config');
 //const urls = require("../public/assets/js/modules/urls")
-/* GET login . */
+
+
+// 基础配置 / 规则设置
 router.get('/', function(req, res, next) {
-    var html = template('basicConfig', {title:"工时项目"});
+    var html = template('basicConfig', {
+        title: "基础设置",
+        time: (new Date).toString()
+    });
     res.send(html);
 });
-router.get('/basicConfig', function(req, res, next) {
-    var data = {
-        title: '工时项目',
-        time: (new Date).toString()
-    };
-    var opts1={
-        method:"POST",
-        uri:"http://127.0.0.1:91/workhour/basicConfigSave.do",
-        json:true
-    };
-    var opts2={
-        method:"POST",
-        uri:"http://127.0.0.1:91/workhour/basicConfigDetail.do",
-        json:true
-    };
-    var rp1=rp(opts1);
-    var rp2=rp(opts2);
-    Promise.all([rp1,rp2]).then(function(datas){
-        data.list1=datas[0];
-        data.list2=datas[1];
-        var html=template("projectTask",data);
-        res.send(html);
-    });
-    /*request(opts,function (error,response,body) {
-     data.list=body;
-     var html=template("projectTask",data);
-     res.send(html);
-     })*/
 
+// 任务配置
+router.get('/taskConfig', function(req, res, next) {
+    var html = template('taskConfig', {
+        title: "任务配置",
+        time: (new Date).toString()
+    });
+    res.send(html);
 });
+
+// 词典管理
+router.get('/versionName', function(req, res, next) {
+    var html = template('versionName', {
+        title: "版本名称",
+        time: (new Date).toString()
+    });
+    res.send(html);
+});
+
+// 权限分配
+router.get('/rightsAllotment', function(req, res, next) {
+    var html = template('rightsAllotment', {
+        title: "权限分配",
+        time: (new Date).toString()
+    });
+    res.send(html);
+});
+
+// 职能组
+router.get('/functionTeam', function(req, res, next) {
+    var html = template('functionTeam', {
+        title: "职能组",
+        time: (new Date).toString()
+    });
+    res.send(html);
+});
+
 module.exports = router;

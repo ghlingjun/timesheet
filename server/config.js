@@ -1,21 +1,24 @@
-//const request_host = "http://192.168.1.183:8080/application-war/dataapi/";
-const request_host = "http://localhost:91/";        //启用模拟服务器数据
+const request_host = "http://192.168.1.184:8080/application-war/dataapi/";
+//const request_host = "http://localhost:91/";        //启用模拟服务器数据
 const request = require('request');
 const rp = require('request-promise');
 const Promise = require('bluebird');
 //get http headers
 function getHeaders(userInfo) {
     var _header = {};
-    _header["tm-header-userid"] = userInfo.userId;
-    _header["tm-header-nonce"] = userInfo.nonce;
-    _header["tm-header-curtime"] = userInfo.curTime;
-    _header["tm-header-companyid"] = userInfo.companyId;
-    _header["tm-header-signature"] = userInfo.signature;
+    if(userInfo) {
+        _header["tm-header-userid"] = userInfo.userId;
+        _header["tm-header-nonce"] = userInfo.nonce;
+        _header["tm-header-curtime"] = userInfo.curTime;
+        _header["tm-header-companyid"] = userInfo.companyId;
+        _header["tm-header-signature"] = userInfo.signature;
+    }
     return _header;
 }
 //提供promise 直渲数据
 function getRequestPromise(options) {
-    var userInfo = options.req.session.userInfo;
+    //var userInfo = options.req.session.userInfo;
+    var userInfo = JSON.parse(options.req.cookies.userInfo);
     var _header = getHeaders(userInfo);
     var urls = options.urls;
     var rps = [];
@@ -36,7 +39,7 @@ function getRequestPromise(options) {
         for(var i=0;i<data.length;i++) {
             var _data = data[i];
             if(_data){
-                var obj = JSON.parse(_data);
+               var obj = JSON.parse(_data);
                 body.push(obj);
             }
         }
@@ -47,7 +50,11 @@ function getRequestPromise(options) {
 //提供node直渲数据
 function getSyncRequest(options) {
     var _param = options.body || {};
-    var userInfo = options.req.session.userInfo;
+    //var userInfo = options.req.session.userInfo;
+    var userInfo = options.req.cookies.userInfo;
+    if(userInfo) {
+        userInfo = JSON.parse(userInfo);
+    }
     var _header = getHeaders(userInfo);
     var opts = {
         method:"post",
@@ -70,7 +77,7 @@ function getSyncRequest(options) {
                 options.callback({
                     code:status,
                     message:errMsg
-                })
+                });
             }
         }else {
             console.log(error);
@@ -82,8 +89,8 @@ function getRequest(options) {
     var req = options.request;
     var _param = req.body || {};//post
     /*if(!_param.body){
-        _param.body = {};
-    }*/
+     _param.body = {};
+     }*/
     var _header = {};
     _header["tm-header-userid"] = req.headers["tm-header-userid"];
     _header["tm-header-nonce"] = req.headers["tm-header-nonce"];
@@ -108,16 +115,16 @@ function getRequest(options) {
                 var _header = response.headers;
                 var errMsg = _header["tm-header-errmsg"];
                 var status = _header["tm-header-status"];
-                options.callback({
-                    code:status,
-                    message:errMsg
-                });
+                req.res.status(501).send({status:status,errMsg:errMsg});
+                /*options.callback({
+                 code:status,
+                 message:errMsg
+                 });*/
                 //response.sendStatus(response.statusCode);
             }
 
         }else {
             console.log(error);
-
         }
     })
 }
@@ -131,12 +138,12 @@ function getCallback(req, res, next) {
 }
 
 const config = {
-	host:'request_host',
-	request:getRequest,
+    host:request_host,
+    request:getRequest,
     syncRequest:getSyncRequest,
     requestPromise:getRequestPromise,
     callback:getCallback,
-	message:"配置全局方法..."
+    message:"配置全局方法..."
 };
 
 module.exports = config;

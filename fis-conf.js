@@ -45,9 +45,8 @@ fis.match('/client/assets/libs/bootstrap-table/bootstrap-table-zh-CN.js', {
     packOrder: 3
 });
 
-
 //JS打包global
-fis.match('/client/assets/js/modules/*.js', {
+fis.match('/client/assets/js/modules/**.js', {
     packTo: '/client/assets/pkg/global.js'
 });
 fis.match('/client/assets/js/build/template.js', {
@@ -98,16 +97,16 @@ fis.match('/client/**.{less,css}', {
 //fis3 release debug ,开发调试环境,
 fis.set('date', new Date);
 fis.media('debug')
+    .match('/client/**{js,css}', {
+        useHash: false
+    })
     .match('/client/assets/*/pages/*{.js,.less}', {
         //query: '?t='+ (fis.get('date').getTime()),
         //domain:'http://xxxx.cn',
         useHash: false,
         optimizer: null
-    })
-    .match('/client/**.js', {
-        useHash: false,
-        optimizer: null
     });
+
 
 /*fis.match('/client/assets/js/build/**.js', {
     useHash: false
